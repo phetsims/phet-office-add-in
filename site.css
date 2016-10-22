@@ -1,37 +1,37 @@
 ﻿/*  overload office */
 body {
-  font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
-  /* font-size: 14px; */
-  /* line-height: 1.428571429;*/
-  color: #333333;
-  background-color: #ffffff;  
+    font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
+    /* font-size: 14px; */
+    /* line-height: 1.428571429;*/
+    color: #333333;
+    background-color: #ffffff;
 }
 
-html, body {    
+html, body {
     width: 100%;
     height: 100%;
     margin: 0px;
     overflow: hidden;
-} 
+}
 
 .office-app-icon {
-  width: 98px;
-  height: 98px;
-  border: 1px solid black;
+    width: 98px;
+    height: 98px;
+    border: 1px solid black;
 }
 
 .office-app > .office-app-icon {
-  float: left !important;
-  margin-right: 25px;
-  vertical-align: top;
+    float: left !important;
+    margin-right: 25px;
+    vertical-align: top;
 }
 
 .office-app > .app-details {
-  overflow: hidden;
+    overflow: hidden;
 }
 
 .office-app > .app-actions {
-  float: right !important;
+    float: right !important;
 }
 
 .row {
@@ -45,11 +45,11 @@ div.active-template {
 }
 
 #top {
-    background-color: rgb(42, 50, 106);
+    background-color: black;
     color: #FFFFFF;
     margin-bottom: 0;
     padding: 0 20px;
-    height: 147px;
+    height: 110px;
     position: absolute;
     top: 0px;
     left: 0px;
@@ -63,21 +63,21 @@ div.active-template {
 
 #main-container {
     margin: 0px;
-    font-size: 14px;    
+    font-size: 14px;
     position: absolute;
-    top: 147px;
+    top: 110px;
     left: 200px;
     right: 0px;
     bottom: 0px;
 }
 
 #domain-list-container {
-    position: absolute;    
+    position: absolute;
     color: #FFFFFF;
     background-color: #FF9933;
     height: 100%;
     z-index: 500;
-    width: 200px;
+    width: 126px;
     padding: 20px 15px;
 }
 
@@ -89,7 +89,7 @@ div.active-template {
 }
 
 .domain {
-    padding: 147px 0px;
+    padding: 113px 0px;
     margin-bottom: 10px;
 }
 
@@ -100,7 +100,7 @@ a.app-btn {
 }
 
 .domain.selected {
-    background-color: #793541; 
+    background-color: #793541;
 }
 
 .categories {
@@ -217,13 +217,13 @@ a.app-btn {
     margin-top: 8px;
 }
 
-#banner-title-logo {    
-    width: 223px;
-    height: 106px;
+#banner-title-logo {
+    width: 150px;
+    /* height: 106px; */
     display: block;
 }
 
-#banner-title-terms {            
+#banner-title-terms {
 }
 
 #banner-title-terms a {
@@ -236,9 +236,9 @@ a.app-btn {
 }
 
 #banner-logo {
-    margin-top: 35px;
-    width: 150px;
-    height: 77px;
+    margin-top: 25px;
+    width: 100px;
+    /* height: 77px; */
     float: right;
 }
 
