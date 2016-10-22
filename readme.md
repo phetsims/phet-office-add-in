@@ -4,12 +4,12 @@
 1. Open PowerPoint, and open File > Options
 1. Navigate to Trust Center > Trust Center Settings > Trusted Add-in Catalogs
 1. In Catalog Url, type in the directory for the manifest file in Network Share format.
-    - Example: \\computer-name\c$\Users\user-name\Desktop
+    - Example: `\\computer-name\c$\Users\user-name\Desktop`
 1. Click Add catalog and add a checkbox for "Show in Menu"
 1. Click OK and restart Powerpoint.
 1. Open a new presentation, or the presentation you want to test.
 1. Click Insert > Store, and select the new "SHARED FOLDER" entry.
-1. If you added the directory correctly to the Trust Center Settings, you should have an option to open the add-in
+1. If there is a manifest file in the directory you added to Trust Center Settings, you should have an option to open the add-in
 
 ## Testing Changes in a Browser:
 1. Commit the changes to the github repo
