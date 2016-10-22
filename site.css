@@ -1,8 +1,6 @@
 ﻿/*  overload office */
 body {
     font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
-    /* font-size: 14px; */
-    /* line-height: 1.428571429;*/
     color: #333333;
     background-color: #ffffff;
 }
@@ -66,7 +64,7 @@ div.active-template {
     font-size: 14px;
     position: absolute;
     top: 110px;
-    left: 200px;
+    left: 56px;
     right: 0px;
     bottom: 0px;
 }
@@ -118,24 +116,21 @@ a.app-btn {
 
 .content {
     display: inline-block;
-    margin: 0px 5px 5px 0px;
-    max-width: 124px;
-    min-height: 84px;
-    max-height: 84px;
+    margin: 15px;
+    width: 168px;
 }
 
 .content-image {
-    width: 124px;
-    height: 88px;
+    width: 168px;
 }
 
 .content-title {
     position: relative;
-    margin-top: -28px;
-    width: 124px;
+    margin-top: 0;
+    width: 168px;
     height: 28px;
     padding: 3px;
-    color: #FFFFFF;
+    color: #ffffff;
     white-space: nowrap;
     overflow: hidden;
     background-color: #9B9188;
@@ -181,9 +176,7 @@ a.app-btn {
 
 .btn-detail {
     padding: 2px 12px 3px 12px;
-    border-width: 1px;
-    border-color: #FFFFFF;
-    border-style: solid;
+    border: 1px solid #FFFFFF;
     border-radius: 0;
 }
 
@@ -219,7 +212,6 @@ a.app-btn {
 
 #banner-title-logo {
     width: 150px;
-    /* height: 106px; */
     display: block;
 }
 
@@ -238,7 +230,6 @@ a.app-btn {
 #banner-logo {
     margin-top: 25px;
     width: 100px;
-    /* height: 77px; */
     float: right;
 }
 

@@ -41,20 +41,11 @@
 
                 </div>
 
-                <div id="domain-list-container">
-                    <div class="domain">
-                        <b>SIMULATIONS</b>
-                    </div>
-                </div>
-
                 <div id="main-container">
                     <div id="categories-container">
                         <div class="categories" data-bind="with: activeDomain">
                             <!-- ko foreach: { data: children, as: 'category' } -->
                             <div class="category" data-bind="visible: children.length > 0">
-                                <div class="category-title">
-                                    <span data-bind="text: title + ' >'"></span>
-                                </div>
 
                                 <!-- ko foreach: children -->
                                 <div class="content">
