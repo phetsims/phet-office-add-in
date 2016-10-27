@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?><OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ContentApp">
+  <Id>10A61CFA-A3B8-4390-BF76-E4B098FEBC15</Id>
+  <Version>1.0.0.0</Version>
+  <ProviderName>PhET Interactive Simulations</ProviderName>
+  <DefaultLocale>en-US</DefaultLocale>
+  <DisplayName DefaultValue="PhET Sims - Science / Math">
+  </DisplayName>
+  <Description DefaultValue="Free, fun, interactive simulations for science and math instruction.">
+  </Description>
+  <IconUrl DefaultValue="https://phet.colorado.edu/office-mix/phet_32x32.png">
+  </IconUrl>
+  <HighResolutionIconUrl DefaultValue="https://phet.colorado.edu/office-mix/icons/phet_96x96.png">
+  </HighResolutionIconUrl>
+  <SupportUrl DefaultValue="http://phet.colorado.edu/en/about/contact"></SupportUrl>
+  <Hosts>
+    <Host Name="Presentation"/>
+  </Hosts>  
+  <DefaultSettings>
+    <SourceLocation DefaultValue="https://phet.colorado.edu/office-mix"></SourceLocation>
+    <!--Only Incontent MOE can have both width and height-->
+    <RequestedWidth>960</RequestedWidth> 
+    <RequestedHeight>540</RequestedHeight>
+  </DefaultSettings>
+  <Permissions>Restricted</Permissions>
+  <!--Allowed snapshot can be true or false for InContent Agaves only-->
+  <AllowSnapshot>true</AllowSnapshot>
+</OfficeApp>
