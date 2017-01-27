@@ -5,12 +5,13 @@
  * @author Matt Pennington
  * @author Michael Kauzmann
  */
-
+/* eslint-env node */
+'use strict';
 
 var request = require('request');
 
 request('https://phet.colorado.edu/services/metadata/1.0/simulations?format=json&locale=en&type=html', function (error, response, bod) {
-  if (!(!error && response.statusCode == 200)) {
+  if (!(!error && response.statusCode === 200)) {
     console.log( 'error getting request');
     return;
   }
