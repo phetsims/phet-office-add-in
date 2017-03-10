@@ -8,18 +8,19 @@
 /* eslint-env node */
 'use strict';
 
-var request = require('request');
+var request = require( 'request' );
+var fs = require( 'fs' );
 
-request('https://phet.colorado.edu/services/metadata/1.0/simulations?format=json&locale=en&type=html', function (error, response, bod) {
-  if (!(!error && response.statusCode === 200)) {
-    console.log( 'error getting request');
+request( 'https://phet.colorado.edu/services/metadata/1.0/simulations?format=json&locale=en&type=html', function( error, response, bod ) {
+  if ( !(!error && response.statusCode === 200) ) {
+    console.log( 'error getting request' );
     return;
   }
 
   var body;
   var apps = [];
 
-  body = JSON.parse(bod);
+  body = JSON.parse( bod );
   body.projects.forEach( function( project ) {
     apps.push( {
       id: 'phet-' + project.simulations[ 0 ].localizedSimulations[ 0 ].runUrl,
@@ -37,5 +38,7 @@ request('https://phet.colorado.edu/services/metadata/1.0/simulations?format=json
     } );
   } );
 
-  console.log( JSON.stringify(apps, null, 2 ) );
-});
+  var template = fs.readFileSync( 'store.html.template' ).toString();
+  template = template.replace( '{{SIMULATION_ARRAY}}', JSON.stringify( apps, null, 2 ) );
+  fs.writeFileSync( 'store.html', template );
+} );

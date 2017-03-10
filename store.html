@@ -1,116 +1,116 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PhET Simulations</title>
-    <link href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="site.css" rel="stylesheet" />
-    <script src="https://localhost:1337/vorlon.js"></script>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PhET Simulations</title>
+  <link href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="site.css" rel="stylesheet" />
+  <script src="https://localhost:1337/vorlon.js"></script>
 </head>
 <body>
-    <script type="text/html" id="loadingTemplate">
-        Loading...
-    </script>
+<script type="text/html" id="loadingTemplate">
+  Loading...
+</script>
 
-    <script type="text/html" id="viewTemplate">
-        <div class="terms-header">
-            <div id="banner-title-terms">
-                <a href="http://www.colorado.edu/physics/phet/dev/license.html" target="_blank">Privacy & Terms</a>
-            </div>
+<script type="text/html" id="viewTemplate">
+  <div class="terms-header">
+    <div id="banner-title-terms">
+      <a href="http://www.colorado.edu/physics/phet/dev/license.html" target="_blank">Privacy & Terms</a>
+    </div>
+  </div>
+  <div class="window-size">
+    <iframe id="view-frame" frameborder="0" data-bind="attr: {src: activeItemUrl }"></iframe>
+  </div>
+</script>
+
+<script type="text/html" id="editTemplate">
+  <div id="edit-pages">
+    <!-- select page -->
+    <!-- ko ifnot: item() -->
+    <div id="select-contents">
+      <div id="top">
+        <img id="banner-logo" src="https://phetmixapp.cloudapp.net/Content/Icons/cu-logo-half.png" />
+
+        <div id="banner-title">
+          <img id="banner-title-logo" src="https://phetmixapp.cloudapp.net/Content/Icons/phet-logo-117.svg" />
+          <div id="banner-title-terms">
+            <a id="banner-title-terms" href="http://www.colorado.edu/physics/phet/dev/license.html" target="_blank">Privacy & Terms</a>
+          </div>
         </div>
-        <div class="window-size">
-            <iframe id="view-frame" frameborder="0" data-bind="attr: {src: activeItemUrl }"></iframe>
-        </div>
-    </script>
 
-    <script type="text/html" id="editTemplate">
-        <div id="edit-pages">
-            <!-- select page -->
-            <!-- ko ifnot: item() -->
-            <div id="select-contents">
-                <div id="top">
-                    <img id="banner-logo" src="https://phetmixapp.cloudapp.net/Content/Icons/cu-logo-half.png" />
+      </div>
 
-                    <div id="banner-title">
-                        <img id="banner-title-logo" src="https://phetmixapp.cloudapp.net/Content/Icons/phet-logo-117.svg" />
-                        <div id="banner-title-terms">
-                            <a id="banner-title-terms" href="http://www.colorado.edu/physics/phet/dev/license.html" target="_blank">Privacy & Terms</a>
-                        </div>
-                    </div>
+      <div id="main-container">
+        <div id="categories-container">
+          <div class="categories" data-bind="with: activeDomain">
+            <!-- ko foreach: { data: children, as: 'category' } -->
+            <div class="category" data-bind="visible: children.length > 0">
 
-                </div>
-
-                <div id="main-container">
-                    <div id="categories-container">
-                        <div class="categories" data-bind="with: activeDomain">
-                            <!-- ko foreach: { data: children, as: 'category' } -->
-                            <div class="category" data-bind="visible: children.length > 0">
-
-                                <!-- ko foreach: children -->
-                                <div class="content">
-                                    <a href="#" class="app-btn">
-                                        <div><img class="content-image" data-bind="attr:{src:thumbnailUrl, alt:title}, click: function() {$root.moveToDetailPage($data);}" /></div>
-                                        <div class="content-title">
+              <!-- ko foreach: children -->
+              <div class="content">
+                <a href="#" class="app-btn">
+                  <div><img class="content-image" data-bind="attr:{src:thumbnailUrl, alt:title}, click: function() {$root.moveToDetailPage($data);}" /></div>
+                  <div class="content-title">
                                             <span data-bind="text: (title.length > 30 ? title.substring(0, 30) : title), attr:{title: title}"
                                                   data-toggle="tooltip">
                                             </span>
-                                        </div>
-                                    </a>
-                                </div>
-                                <!-- /ko -->
-                            </div>
-                            <!-- /ko -->
-                        </div>
-                    </div>
-                </div>
+                  </div>
+                </a>
+              </div>
+              <!-- /ko -->
             </div>
             <!-- /ko -->
-            <!-- detail page -->
-            <!-- ko if: item() -->
-            <div id="content-detail">
-                <div id="content-detail-wrapper" class="row">
-                    <div id="detail-left" class="col-sm-3 col-xs-5">
-                        <div id="detail-title">
-                            <span data-bind="text: item().title" />
-                        </div>
-                        <div id="detail-description">
-                            <span data-bind="text: item().description" />
-                        </div>
-                        <div id="detail-buttons">
-                            <div id="detail-insert" class="btn btn-detail">
-                                <a href="#" data-bind="click: onInsertClick">Insert</a>
-                            </div>
-                            <div id="detail-cancel" class="btn btn-detail">
-                                <a href="#" data-bind="click: moveToSelectPage">Cancel</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div id="detail-right" class="col-sm-9 col-xs-7">
-                        <iframe id="detail-content-preview-frame" class="preview-frame" frameborder="0" data-bind="attr: {src: activeItemUrl }"></iframe>
-                    </div>
-                </div>
-            </div>
-            <!-- /ko -->
+          </div>
         </div>
-    </script>
-
-    <div class="active-template" data-bind="template: { name: view() }">
+      </div>
     </div>
+    <!-- /ko -->
+    <!-- detail page -->
+    <!-- ko if: item() -->
+    <div id="content-detail">
+      <div id="content-detail-wrapper" class="row">
+        <div id="detail-left" class="col-sm-3 col-xs-5">
+          <div id="detail-title">
+            <span data-bind="text: item().title" />
+          </div>
+          <div id="detail-description">
+            <span data-bind="text: item().description" />
+          </div>
+          <div id="detail-buttons">
+            <div id="detail-insert" class="btn btn-detail">
+              <a href="#" data-bind="click: onInsertClick">Insert</a>
+            </div>
+            <div id="detail-cancel" class="btn btn-detail">
+              <a href="#" data-bind="click: moveToSelectPage">Cancel</a>
+            </div>
+          </div>
+        </div>
+        <div id="detail-right" class="col-sm-9 col-xs-7">
+          <iframe id="detail-content-preview-frame" class="preview-frame" frameborder="0" data-bind="attr: {src: activeItemUrl }"></iframe>
+        </div>
+      </div>
+    </div>
+    <!-- /ko -->
+  </div>
+</script>
 
-    <script src="https://appsforoffice.microsoft.com/lib/1.1/hosted/office.js" type="text/javascript"></script>
-    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.9.1.min.js"></script>
-    <script src="https://ajax.aspnetcdn.com/ajax/knockout/knockout-3.0.0.js"></script>
-    <script src="https://az592748.vo.msecnd.net/sdk/LabsJS-1.0.4/labs-1.0.4.min.js"></script>
-    <script src="store.js"></script>
+<div class="active-template" data-bind="template: { name: view() }">
+</div>
 
-    <script>
-        var browseUrl = "/api/Phet/Browse";
-        var categoryUrl = "/api/Phet/Simulations";
-        var getUrl = "/api/Phet/GetSimulation";
+<script src="https://appsforoffice.microsoft.com/lib/1.1/hosted/office.js" type="text/javascript"></script>
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.9.1.min.js"></script>
+<script src="https://ajax.aspnetcdn.com/ajax/knockout/knockout-3.0.0.js"></script>
+<script src="https://az592748.vo.msecnd.net/sdk/LabsJS-1.0.4/labs-1.0.4.min.js"></script>
+<script src="store.js"></script>
 
-        var apps = [
+<script>
+  var browseUrl = "/api/Phet/Browse";
+  var categoryUrl = "/api/Phet/Simulations";
+  var getUrl = "/api/Phet/GetSimulation";
+
+  var apps = [
   {
     "id": "phet-https://phet.colorado.edu/sims/html/acid-base-solutions/latest/acid-base-solutions_en.html",
     "providerId": "https://phet.colorado.edu/sims/html/acid-base-solutions/latest/acid-base-solutions_en.html",
@@ -137,7 +137,7 @@
     "thumbnailUrl": "https://phet.colorado.edu/sims/html/area-builder/latest/area-builder-128.png",
     "contentUrl": "https://phet.colorado.edu/sims/html/area-builder/latest/area-builder_en.html",
     "author": null,
-    "description": "Create your own shapes using colorful blocks and explore the relationship between perimeter and area. Compare thearea and perimeter of two shapes side-by-side. Challenge yourself in the game screen to build shapes or find the area of funky figures. Try to collect lots of stars!"
+    "description": "Create your own shapes using colorful blocks and explore the relationship between perimeter and area. Compare the area and perimeter of two shapes side-by-side. Challenge yourself in the game screen to build shapes or find the area of funky figures. Try to collect lots of stars!"
   },
   {
     "id": "phet-https://phet.colorado.edu/sims/html/arithmetic/latest/arithmetic_en.html",
@@ -165,7 +165,7 @@
     "thumbnailUrl": "https://phet.colorado.edu/sims/html/atomic-interactions/latest/atomic-interactions-128.png",
     "contentUrl": "https://phet.colorado.edu/sims/html/atomic-interactions/latest/atomic-interactions_en.html",
     "author": null,
-    "description": "Explore the interactions between various combinations of two atoms. Observe the the total force acting on the atoms or the individual attractive and repulsive forces. Customize the attraction to see how changing the atomic diameter and interactionstrength affects the interaction."
+    "description": "Explore the interactions between various combinations of two atoms. Observe the the total force acting on the atoms or the individual attractive and repulsive forces. Customize the attraction to see how changing the atomic diameter and interaction strength affects the interaction."
   },
   {
     "id": "phet-https://phet.colorado.edu/sims/html/balancing-act/latest/balancing-act_en.html",
@@ -197,18 +197,15 @@
   },
   {
     "id": "phet-https://phet.colorado.edu/sims/html/balloons-and-static-electricity/latest/balloons-and-static-electricity_en.html",
-    "providerId": "https://phet.colorado.edu/sims/html/balloons-and-static-electricity/latest/balloons-and-static-electricity_en.html"
-,
-    "readableId": "https://phet.colorado.edu/sims/html/balloons-and-static-electricity/latest/balloons-and-static-electricity_en.html"
-,
+    "providerId": "https://phet.colorado.edu/sims/html/balloons-and-static-electricity/latest/balloons-and-static-electricity_en.html",
+    "readableId": "https://phet.colorado.edu/sims/html/balloons-and-static-electricity/latest/balloons-and-static-electricity_en.html",
     "youtubeId": null,
     "durationInSec": 0,
     "type": "exercise",
     "title": "Balloons and Static Electricity",
     "depth": 2,
     "thumbnailUrl": "https://phet.colorado.edu/sims/html/balloons-and-static-electricity/latest/balloons-and-static-electricity-128.png",
-    "contentUrl": "https://phet.colorado.edu/sims/html/balloons-and-static-electricity/latest/balloons-and-static-electricity_en.html"
-,
+    "contentUrl": "https://phet.colorado.edu/sims/html/balloons-and-static-electricity/latest/balloons-and-static-electricity_en.html",
     "author": null,
     "description": "Why does a balloon stick to your sweater? Explore the charges in the sweater, balloons, and the wall as you investigate!"
   },
@@ -224,7 +221,7 @@
     "thumbnailUrl": "https://phet.colorado.edu/sims/html/beers-law-lab/latest/beers-law-lab-128.png",
     "contentUrl": "https://phet.colorado.edu/sims/html/beers-law-lab/latest/beers-law-lab_en.html",
     "author": null,
-    "description": "“The thicker the glass, the darker the brew, the less the light that passes through.”  Make colorful concentratedand dilute solutions and explore how much light they absorb and transmit using a virtual spectrophotometer!"
+    "description": "“The thicker the glass, the darker the brew, the less the light that passes through.”  Make colorful concentrated and dilute solutions and explore how much light they absorb and transmit using a virtual spectrophotometer!"
   },
   {
     "id": "phet-https://phet.colorado.edu/sims/html/bending-light/latest/bending-light_en.html",
@@ -266,7 +263,7 @@
     "thumbnailUrl": "https://phet.colorado.edu/sims/html/charges-and-fields/latest/charges-and-fields-128.png",
     "contentUrl": "https://phet.colorado.edu/sims/html/charges-and-fields/latest/charges-and-fields_en.html",
     "author": null,
-    "description": "Arrange positive and negative charges in space and view the resulting electric field and electrostatic potential.Plot equipotential lines and discover their relationship to the electric field. Create models of dipoles, capacitors, and more!"
+    "description": "Arrange positive and negative charges in space and view the resulting electric field and electrostatic potential. Plot equipotential lines and discover their relationship to the electric field. Create models of dipoles, capacitors, and more!"
   },
   {
     "id": "phet-https://phet.colorado.edu/sims/html/color-vision/latest/color-vision_en.html",
@@ -479,6 +476,20 @@
     "description": "Create your own scatter plot or use real-world data and try to fit a line to it! Explore how individual data points affect the correlation coefficient and best-fit line."
   },
   {
+    "id": "phet-https://phet.colorado.edu/sims/html/make-a-ten/latest/make-a-ten_en.html",
+    "providerId": "https://phet.colorado.edu/sims/html/make-a-ten/latest/make-a-ten_en.html",
+    "readableId": "https://phet.colorado.edu/sims/html/make-a-ten/latest/make-a-ten_en.html",
+    "youtubeId": null,
+    "durationInSec": 0,
+    "type": "exercise",
+    "title": "Make a Ten",
+    "depth": 2,
+    "thumbnailUrl": "https://phet.colorado.edu/sims/html/make-a-ten/latest/make-a-ten-128.png",
+    "contentUrl": "https://phet.colorado.edu/sims/html/make-a-ten/latest/make-a-ten_en.html",
+    "author": null,
+    "description": "Add numbers by making tens. Break apart and combine numbers while focusing on place value. Use the adding screen to add any two numbers. Use the game screen to apply your make-a-ten strategies!"
+  },
+  {
     "id": "phet-https://phet.colorado.edu/sims/html/molarity/latest/molarity_en.html",
     "providerId": "https://phet.colorado.edu/sims/html/molarity/latest/molarity_en.html",
     "readableId": "https://phet.colorado.edu/sims/html/molarity/latest/molarity_en.html",
@@ -602,11 +613,10 @@
     "thumbnailUrl": "https://phet.colorado.edu/sims/html/plinko-probability/latest/plinko-probability-128.png",
     "contentUrl": "https://phet.colorado.edu/sims/html/plinko-probability/latest/plinko-probability_en.html",
     "author": null,
-    "description": "Drop balls through a triangular grid of pegs and see them accumulate in containers. Switch to a histogram view and compare the distribution of balls to an ideal binomial distribution. Adjust the binomial probability and develop your knowledge of statistics!"
+    "description": "Drop balls through a triangular grid of pegs and see them accumulate in containers. Switch to a histogram view and compare the distribution of balls to an ideal binomial distribution. Adjust the binary probability and develop your knowledge of statistics!"
   },
   {
     "id": "phet-https://phet.colorado.edu/sims/html/reactants-products-and-leftovers/latest/reactants-products-and-leftovers_en.html",
-
     "providerId": "https://phet.colorado.edu/sims/html/reactants-products-and-leftovers/latest/reactants-products-and-leftovers_en.html",
     "readableId": "https://phet.colorado.edu/sims/html/reactants-products-and-leftovers/latest/reactants-products-and-leftovers_en.html",
     "youtubeId": null,
@@ -617,7 +627,7 @@
     "thumbnailUrl": "https://phet.colorado.edu/sims/html/reactants-products-and-leftovers/latest/reactants-products-and-leftovers-128.png",
     "contentUrl": "https://phet.colorado.edu/sims/html/reactants-products-and-leftovers/latest/reactants-products-and-leftovers_en.html",
     "author": null,
-    "description": "Create your own sandwich and then see how many sandwiches you can make with different amounts of ingredients. Do the same with chemical reactions. See how many products you can make with different amounts of reactants. Play a game to test your undrstanding of reactants, products and leftovers. Can you get a perfect score on each level?"
+    "description": "Create your own sandwich and then see how many sandwiches you can make with different amounts of ingredients. Do the same with chemical reactions. See how many products you can make with different amounts of reactants. Play a game to test your understanding of reactants, products and leftovers. Can you get a perfect score on each level?"
   },
   {
     "id": "phet-https://phet.colorado.edu/sims/html/resistance-in-a-wire/latest/resistance-in-a-wire_en.html",
@@ -645,7 +655,7 @@
     "thumbnailUrl": "https://phet.colorado.edu/sims/html/rutherford-scattering/latest/rutherford-scattering-128.png",
     "contentUrl": "https://phet.colorado.edu/sims/html/rutherford-scattering/latest/rutherford-scattering_en.html",
     "author": null,
-    "description": "How did Rutherford figure out the structure of the atom without being able to see it?  Simulate the famous experiment in which he disproved the Plum Pudding model of the atom by observing alpha particles bouncing off atoms and determining that theymust have a small core."
+    "description": "How did Rutherford figure out the structure of the atom without being able to see it?  Simulate the famous experiment in which he disproved the Plum Pudding model of the atom by observing alpha particles bouncing off atoms and determining that they must have a small core."
   },
   {
     "id": "phet-https://phet.colorado.edu/sims/html/states-of-matter/latest/states-of-matter_en.html",
@@ -701,7 +711,7 @@
     "thumbnailUrl": "https://phet.colorado.edu/sims/html/under-pressure/latest/under-pressure-128.png",
     "contentUrl": "https://phet.colorado.edu/sims/html/under-pressure/latest/under-pressure_en.html",
     "author": null,
-    "description": "Explore pressure under and above water. See how pressure changes as you change fluids, gravity, container shapes,and volume."
+    "description": "Explore pressure under and above water. See how pressure changes as you change fluids, gravity, container shapes, and volume."
   },
   {
     "id": "phet-https://phet.colorado.edu/sims/html/wave-on-a-string/latest/wave-on-a-string_en.html",
@@ -719,64 +729,64 @@
   }
 ];
 
-        var phetDriver = {
-            loadCategories: function (maxDepth) {                
-                return $.when([{ title: "Browse All", id: "PhET", depth: 0, children: [{ title: "HTML5 Simulations", id: "HTML5 Simulations", depth: 1, children: [] }] }]);
-            },
+  var phetDriver = {
+    loadCategories: function (maxDepth) {
+      return $.when([{ title: "Browse All", id: "PhET", depth: 0, children: [{ title: "HTML5 Simulations", id: "HTML5 Simulations", depth: 1, children: [] }] }]);
+    },
 
-            loadCategory: function (categoryId, searchText) {
-                return $.when(apps);
-            },
+    loadCategory: function (categoryId, searchText) {
+      return $.when(apps);
+    },
 
-            get: function (id) {
-                var app = null;
-                for (var i = 0; i < apps.length; i++) {
-                    if (apps[i].id === id) {
-                        app = apps[i];
-                        break;
-                    }                    
-                }
+    get: function (id) {
+      var app = null;
+      for (var i = 0; i < apps.length; i++) {
+        if (apps[i].id === id) {
+          app = apps[i];
+          break;
+        }
+      }
 
-                return $.when(app);
-            },
+      return $.when(app);
+    },
 
-            buildConfiguration: function (content) {
-                var appVersion = { major: 1, minor: 1 };
-                var activityComponent = {
-                    type: Labs.Components.ActivityComponentType,
-                    name: content.title,
-                    values: {},
-                    data: {
-                        id: content.id
-                    },
-                    secure: false
-                };
+    buildConfiguration: function (content) {
+      var appVersion = { major: 1, minor: 1 };
+      var activityComponent = {
+        type: Labs.Components.ActivityComponentType,
+        name: content.title,
+        values: {},
+        data: {
+          id: content.id
+        },
+        secure: false
+      };
 
-                var configuration = {
-                    appVersion: appVersion,
-                    components: [activityComponent],
-                    name: content.title,
-                    timeline: null,
-                    analytics: null
-                };
+      var configuration = {
+        appVersion: appVersion,
+        components: [activityComponent],
+        name: content.title,
+        timeline: null,
+        analytics: null
+      };
 
-                return configuration;
-            },
+      return configuration;
+    },
 
-            getIdFromConfiguration: function (configuration) {
-                return configuration.components[0].data.id;
-            }
-        };
+    getIdFromConfiguration: function (configuration) {
+      return configuration.components[0].data.id;
+    }
+  };
 
-        Labs.DefaultHostBuilder = function () {
-            if (window.location.href.indexOf("PostMessageLabHost") !== -1) {
-                return new Labs.PostMessageLabHost("test", parent, "*");
-            } else {
-                return new Labs.OfficeJSLabHost();
-            }
-        };
+  Labs.DefaultHostBuilder = function () {
+    if (window.location.href.indexOf("PostMessageLabHost") !== -1) {
+      return new Labs.PostMessageLabHost("test", parent, "*");
+    } else {
+      return new Labs.OfficeJSLabHost();
+    }
+  };
 
-        MixAppBrowser.initialize(phetDriver);
-    </script>
+  MixAppBrowser.initialize(phetDriver);
+</script>
 </body>
 </html>
