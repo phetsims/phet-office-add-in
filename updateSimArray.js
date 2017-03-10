@@ -1,7 +1,7 @@
-// Copyright 2016, University of Colorado Boulder
+// Copyright 2016-2017, University of Colorado Boulder
 
 /**
- * This script queries the Metadata API and writes a new apps object with the latest sims for use in phet-office-mix/store.html
+ * This script queries the Metadata API and writes a new apps object with the latest sims and automatically writes it to public/store.html
  * @author Matt Pennington
  * @author Michael Kauzmann
  */
@@ -40,5 +40,5 @@ request( 'https://phet.colorado.edu/services/metadata/1.0/simulations?format=jso
 
   var template = fs.readFileSync( 'store.html.template' ).toString();
   template = template.replace( '{{SIMULATION_ARRAY}}', JSON.stringify( apps, null, 2 ) );
-  fs.writeFileSync( 'store.html', template );
+  fs.writeFileSync( 'public/store.html', template );
 } );
