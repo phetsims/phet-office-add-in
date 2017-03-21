@@ -13,7 +13,7 @@
 
 ## Testing Changes in a Browser:
 1. Commit the changes to the github repo
-1. Pull the changes to phet-server: /data/share/phet/phet-repos/phet-office-mix
+1. Pull the changes to phet-server: /data/share/phet/phet-office-mix
 1. Copy the changes to the document root: /data/web/static/phetsims/office-mix
 1. Click this link to interact with the changes in a test environment: https://labsjs.blob.core.windows.net/sdk/LabsJS-1.0.4/labshost.html?lab=https://phet.colorado.edu/office-mix/store.html?PostMessageLabHost
 - Pro Tip: Powerpoint uses IE11 to display the add-in, so if you are seeing errors in PowerPoint but not in Chrome, try viewing this link in IE11 to troubleshoot
