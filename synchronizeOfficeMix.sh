@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 # Copyright 2017, University of Colorado Boulder
 
+cd /data/share/phet/phet-office-mix
+
 # Rewrite the sim array
 node updateSimArray.js
 
