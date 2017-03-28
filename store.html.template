@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PhET Simulations</title>
   <link href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" />
-  <link href="public/site.css" rel="stylesheet" />
+  <link href="site.css" rel="stylesheet" />
   <script src="https://localhost:1337/vorlon.js"></script>
 </head>
 <body>
@@ -103,7 +103,7 @@
 <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.9.1.min.js"></script>
 <script src="https://ajax.aspnetcdn.com/ajax/knockout/knockout-3.0.0.js"></script>
 <script src="https://az592748.vo.msecnd.net/sdk/LabsJS-1.0.4/labs-1.0.4.min.js"></script>
-<script src="public/store.js"></script>
+<script src="store.js"></script>
 
 <script>
   var browseUrl = "/api/Phet/Browse";
