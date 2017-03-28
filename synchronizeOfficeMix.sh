@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 # Copyright 2017, University of Colorado Boulder
 
+echo "Synchronizing phet-office-mix"
+date 
+
 cd /data/share/phet/phet-office-mix
 
 # Rewrite the sim array
