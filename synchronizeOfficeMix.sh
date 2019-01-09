@@ -15,4 +15,4 @@ git pull
 git push
 
 # deploy it to /office-mix on the website
-cp -r public/* /data/web/static/phetsims/office-add-in
+cp -r public/* /data/web/static/phetsims/office-mix
