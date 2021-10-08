@@ -1,26 +1,31 @@
 // Copyright 2016-2017, University of Colorado Boulder
 
 /**
- * This script queries the Metadata API and writes a new apps object with the latest sims and automatically writes it to public/store.html
+ * This script queries the Metadata API and writes a new apps object with the latest sims and automatically writes it
+ * to public/store.html
  * @author Matt Pennington
  * @author Michael Kauzmann
  */
 /* eslint-env node */
 'use strict';
 
-var request = require( 'request' );
-var fs = require( 'fs' );
+const axios = require( 'axios' );
+const fs = require( 'fs' );
 
-request( 'https://phet.colorado.edu/services/metadata/1.0/simulations?format=json&locale=en&type=html', function( error, response, bod ) {
-  if ( !(!error && response.statusCode === 200) ) {
-    console.log( 'error getting request' );
+( async () => {
+  let response;
+  try {
+    response = await axios( 'https://phet.colorado.edu/services/metadata/1.0/simulations?format=json&locale=en&type=html' );
+  }
+  catch( e ) {
+    console.error( 'error getting request', e );
     return;
   }
 
-  var body;
-  var apps = [];
+  let body;
+  let apps = [];
 
-  body = JSON.parse( bod );
+  body = response.data;
   body.projects.forEach( function( project ) {
     apps.push( {
       id: 'phet-' + project.simulations[ 0 ].localizedSimulations[ 0 ].runUrl,
@@ -41,4 +46,4 @@ request( 'https://phet.colorado.edu/services/metadata/1.0/simulations?format=jso
   var template = fs.readFileSync( 'store.html.template' ).toString();
   template = template.replace( '{{SIMULATION_ARRAY}}', JSON.stringify( apps, null, 2 ) );
   fs.writeFileSync( 'public/store.html', template );
-} );
+} )();
